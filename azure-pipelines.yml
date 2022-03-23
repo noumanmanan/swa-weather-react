@@ -1,5 +1,5 @@
-# Node.js with React
-# Build a Node.js project that uses React.
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -16,19 +16,13 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    npm install -g @angular/cli
     npm install
-    npm run build
+    ng build --prod --output-path dist
   displayName: 'npm install and build'
-
-- script: |
-    ng build --prod --configuration=production --output-path dist
-  displayName: 'ng build'
-
 - task: AzureStaticWebApp@0
-  displayName: 'Deploy'
   inputs:
-    app_location: '$(Agent.BuildDirectory)'
-    output_location: '/dist'
-    azure_static_web_apps_api_token: 28d52a2b480ed1f0a9fdf7f73ef5097b7fd4591e117dd56402fa6a4a918558c01-209e9b7b-d684-4395-9f45-245c4416baa301077804
-    skip_app_build: true
-    verbose: true
+      app_location: "/" 
+      output_location: "dist"
+  env:
+      azure_static_web_apps_api_token: $(deployment_token)
