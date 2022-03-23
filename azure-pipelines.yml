@@ -25,6 +25,6 @@ steps:
   inputs:
     app_location: '$(projectSrcPath)/dist'
     output_location: '/src'
-    # azure_static_web_apps_api_token: '6b56713301f549fc3afc3921624e8e34eeceb4d584822f61e0cb8d10bbf459dc1-6113fab9-373f-4c25-80af-12cdc4b8af3200f25483'
+    azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_PLANT_069C3BA10 }}
     skip_app_build: true
     verbose: true
