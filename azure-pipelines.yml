@@ -22,7 +22,7 @@ steps:
 
 - script: |
     ng build --prod --configuration=production --output-path dist
-  displayName: 'Building [${{coalesce(parameters.component.displayName, parameters.component.name)}}]'
+  displayName: 'ng build'
 
 - task: AzureStaticWebApp@0
   displayName: 'Deploy'
